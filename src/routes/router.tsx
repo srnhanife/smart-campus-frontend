@@ -93,39 +93,75 @@ export const router = createBrowserRouter([
       },
       {
         path: '/my-courses',
-        element: <MyCoursesPage />,
+        element: (
+          <ProtectedRoute roles={['student']}>
+            <MyCoursesPage />
+          </ProtectedRoute>
+        ),
       },
       {
         path: '/grades',
-        element: <GradesPage />,
+        element: (
+          <ProtectedRoute roles={['student']}>
+            <GradesPage />
+          </ProtectedRoute>
+        ),
       },
       {
         path: '/gradebook',
-        element: <GradebookPage />,
+        element: (
+          <ProtectedRoute roles={['faculty', 'admin']}>
+            <GradebookPage />
+          </ProtectedRoute>
+        ),
       },
       {
         path: '/gradebook/:sectionId',
-        element: <GradebookPage />,
+        element: (
+          <ProtectedRoute roles={['faculty', 'admin']}>
+            <GradebookPage />
+          </ProtectedRoute>
+        ),
       },
       {
         path: '/attendance/start',
-        element: <StartAttendancePage />,
+        element: (
+          <ProtectedRoute roles={['faculty', 'admin']}>
+            <StartAttendancePage />
+          </ProtectedRoute>
+        ),
       },
       {
         path: '/attendance/give/:sessionId',
-        element: <GiveAttendancePage />,
+        element: (
+          <ProtectedRoute roles={['student']}>
+            <GiveAttendancePage />
+          </ProtectedRoute>
+        ),
       },
       {
         path: '/my-attendance',
-        element: <MyAttendancePage />,
+        element: (
+          <ProtectedRoute roles={['student']}>
+            <MyAttendancePage />
+          </ProtectedRoute>
+        ),
       },
       {
         path: '/attendance/report',
-        element: <AttendanceReportPage />,
+        element: (
+          <ProtectedRoute roles={['faculty', 'admin']}>
+            <AttendanceReportPage />
+          </ProtectedRoute>
+        ),
       },
       {
         path: '/attendance/report/:sectionId',
-        element: <AttendanceReportPage />,
+        element: (
+          <ProtectedRoute roles={['faculty', 'admin']}>
+            <AttendanceReportPage />
+          </ProtectedRoute>
+        ),
       },
       {
         path: '/excuse-requests',

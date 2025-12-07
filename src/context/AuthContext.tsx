@@ -20,6 +20,7 @@ interface AuthContextValue {
   register: (payload: RegisterPayload) => Promise<string>;
   logout: () => Promise<void>;
   refreshProfile: () => Promise<void>;
+  setUserState: (user: AuthUser | null) => void;
 }
 
 const AuthContext = createContext<AuthContextValue | undefined>(undefined);
@@ -79,6 +80,10 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     tokenStorage.setUser(profile);
   }, []);
 
+  const setUserState = useCallback((nextUser: AuthUser | null) => {
+    setUser(nextUser);
+  }, []);
+
   const value = useMemo(
     () => ({
       user,
@@ -88,8 +93,9 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
       register,
       logout,
       refreshProfile,
+      setUserState,
     }),
-    [user, isInitializing, login, register, logout, refreshProfile]
+    [user, isInitializing, login, register, logout, refreshProfile, setUserState]
   );
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

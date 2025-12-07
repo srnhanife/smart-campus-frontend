@@ -11,19 +11,28 @@ import {
   TextField,
   Typography,
 } from '@mui/material';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AuthLayout } from '@/components/layout/AuthLayout';
 import { useAuth } from '@/context/AuthContext';
 import { loginSchema } from '@/utils/validationSchemas';
 import type { LoginPayload } from '@/types/auth';
 import { useToast } from '@/hooks/useToast';
 import { getApiErrorMessage } from '@/utils/apiError';
+import { tokenStorage } from '@/utils/tokenStorage';
+
+const devUser = {
+  id: 'dev-user',
+  fullName: 'Dev Student',
+  email: 'dev@student.edu',
+  role: 'student' as const,
+};
 
 type LoginFormValues = LoginPayload;
 
 export const LoginPage = () => {
-  const { login } = useAuth();
+  const { login, setUserState } = useAuth();
   const toast = useToast();
+  const navigate = useNavigate();
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const {
@@ -113,6 +122,21 @@ export const LoginPage = () => {
             Hemen kayıt olun
           </MuiLink>
         </Typography>
+        {import.meta.env.DEV && (
+          <Button
+            variant="text"
+            color="secondary"
+            onClick={() => {
+              tokenStorage.setTokens({ accessToken: 'dev-token', refreshToken: 'dev-refresh' });
+              tokenStorage.setUser(devUser);
+              setUserState(devUser);
+              toast.info('Dev kullanıcı ile giriş yapıldı');
+              navigate('/dashboard', { replace: true });
+            }}
+          >
+            Dev Login
+          </Button>
+        )}
       </Stack>
     </AuthLayout>
   );
