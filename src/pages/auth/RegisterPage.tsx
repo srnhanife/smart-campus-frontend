@@ -78,7 +78,7 @@ export const RegisterPage = () => {
     <AuthLayout title="Hesap Oluştur" subtitle="Smart Campus">
       <Stack component="form" spacing={3} onSubmit={handleSubmit(onSubmit)}>
         <Grid container spacing={2}>
-          <Grid size={{ xs: 12 }}>
+          <Grid item xs={12}>
             <Controller
               name="fullName"
               control={control}
@@ -93,7 +93,7 @@ export const RegisterPage = () => {
               )}
             />
           </Grid>
-          <Grid size={{ xs: 12 }}>
+          <Grid item xs={12}>
             <Controller
               name="email"
               control={control}
@@ -109,7 +109,7 @@ export const RegisterPage = () => {
               )}
             />
           </Grid>
-          <Grid size={{ xs: 12, md: 6 }}>
+          <Grid item xs={12} md={6}>
             <Controller
               name="password"
               control={control}
@@ -125,7 +125,7 @@ export const RegisterPage = () => {
               )}
             />
           </Grid>
-          <Grid size={{ xs: 12, md: 6 }}>
+          <Grid item xs={12} md={6}>
             <Controller
               name="confirmPassword"
               control={control}
@@ -141,7 +141,7 @@ export const RegisterPage = () => {
               )}
             />
           </Grid>
-          <Grid size={{ xs: 12, md: 6 }}>
+          <Grid item xs={12} md={6}>
             <FormControl fullWidth error={Boolean(errors.role)}>
               <InputLabel id="role-label">Kullanıcı Tipi</InputLabel>
               <Controller
@@ -157,7 +157,7 @@ export const RegisterPage = () => {
               <FormHelperText>{errors.role?.message}</FormHelperText>
             </FormControl>
           </Grid>
-          <Grid size={{ xs: 12, md: 6 }}>
+          <Grid item xs={12} md={6}>
             <FormControl fullWidth error={Boolean(errors.department)}>
               <InputLabel id="department-label">Bölüm</InputLabel>
               <Controller
@@ -182,7 +182,7 @@ export const RegisterPage = () => {
             </FormControl>
           </Grid>
           {role === 'student' && (
-            <Grid size={{ xs: 12 }}>
+            <Grid item xs={12}>
               <Controller
                 name="studentNumber"
                 control={control}

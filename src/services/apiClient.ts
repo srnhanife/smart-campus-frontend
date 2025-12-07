@@ -1,4 +1,5 @@
-import axios, { AxiosError, InternalAxiosRequestConfig } from 'axios';
+import axios, { AxiosError } from 'axios';
+import type { AxiosRequestConfig } from 'axios';
 import { appConfig, apiRoutes } from '@/config/appConfig';
 import { tokenStorage } from '@/utils/tokenStorage';
 
@@ -30,7 +31,7 @@ const refreshAccessToken = async (): Promise<string | null> => {
   return data.accessToken;
 };
 
-const attachAuthorizationHeader = (config: InternalAxiosRequestConfig) => {
+const attachAuthorizationHeader = (config: AxiosRequestConfig) => {
   const token = tokenStorage.getAccessToken();
   if (token && config.headers) {
     config.headers.Authorization = `Bearer ${token}`;

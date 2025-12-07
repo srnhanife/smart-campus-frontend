@@ -24,7 +24,7 @@ export const DashboardPage = () => {
 
       <Grid container spacing={2}>
         {overviewCards.map((card) => (
-          <Grid key={card.title} size={{ xs: 12, md: 4 }}>
+          <Grid key={card.title} item xs={12} md={4}>
             <Card sx={{ height: '100%' }}>
               <CardContent>
                 <Typography variant="h6" gutterBottom>

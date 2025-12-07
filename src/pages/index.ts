@@ -6,4 +6,14 @@ export { VerifyEmailPage } from './auth/VerifyEmailPage';
 export { DashboardPage } from './dashboard/DashboardPage';
 export { ProfilePage } from './profile/ProfilePage';
 export { NotFoundPage } from './NotFoundPage';
+export { CoursesPage } from './courses/CoursesPage';
+export { CourseDetailPage } from './courses/CourseDetailPage';
+export { MyCoursesPage } from './courses/MyCoursesPage';
+export { GradesPage } from './grades/GradesPage';
+export { GradebookPage } from './grades/GradebookPage';
+export { StartAttendancePage } from './attendance/StartAttendancePage';
+export { GiveAttendancePage } from './attendance/GiveAttendancePage';
+export { MyAttendancePage } from './attendance/MyAttendancePage';
+export { AttendanceReportPage } from './attendance/AttendanceReportPage';
+export { ExcuseRequestsPage } from './attendance/ExcuseRequestsPage';
 

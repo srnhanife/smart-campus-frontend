@@ -106,7 +106,7 @@ export const ProfilePage = () => {
       <Card>
         <CardContent>
           <Grid container spacing={3}>
-            <Grid size={{ xs: 12, md: 4 }}>
+            <Grid item xs={12} md={4}>
               <Stack alignItems="center" spacing={2}>
                 <Avatar src={user?.avatarUrl} sx={{ width: 120, height: 120 }}>
                   {user?.fullName?.[0]}
@@ -128,7 +128,7 @@ export const ProfilePage = () => {
                 <Typography color="text.secondary">JPG/PNG • Max 5MB</Typography>
               </Stack>
             </Grid>
-            <Grid size={{ xs: 12, md: 8 }}>
+            <Grid item xs={12} md={8}>
               <Typography variant="h6" gutterBottom>
                 Kişisel Bilgiler
               </Typography>
